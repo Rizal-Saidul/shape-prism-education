@@ -3,24 +3,24 @@
 To-do list ini disusun berdasarkan rubrik penilaian tugas pemrograman web dasar (HTML, CSS, JS).
 
 ## 🚀 Fase 1: Persiapan & Riset
-- [ ] **Setup Proyek**
-    - [ ] Buat folder proyek baru.
-    - [ ] Buat file kosong: `index.html`, `style.css`, `script.js`.
-    - [ ] Buat folder `assets/images`.
-    - [ ] Inisialisasi Git (`git init`).
-- [ ] **Pengumpulan Aset & Materi** (Sumber: Ruangguru)
-    - [ ] Cari & simpan gambar ilustrasi Prisma Segitiga.
-    - [ ] Cari & simpan gambar ilustrasi Prisma Segiempat/Kubus/Balok.
-    - [ ] Rangkum definisi prisma (parafrase agar unik).
-    - [ ] Catat rumus Volume & Luas Permukaan Prisma.
-    - [ ] Catat sifat-sifat prisma (jumlah sisi, rusuk, titik sudut) untuk data tabel.
+- [x] **Setup Proyek**
+    - [x] Buat folder proyek baru.
+    - [x] Buat file kosong: `index.html`, `style.css`, `script.js`.
+    - [x] Buat folder `assets/images`.
+    - [x] Inisialisasi Git (`git init`).
+- [x] **Pengumpulan Aset & Materi** (Sumber: Ruangguru)
+    - [x] Cari & simpan gambar ilustrasi Prisma Segitiga.
+    - [x] Cari & simpan gambar ilustrasi Prisma Segiempat/Kubus/Balok.
+    - [x] Rangkum definisi prisma (parafrase agar unik).
+    - [x] Catat rumus Volume & Luas Permukaan Prisma.
+    - [x] Catat sifat-sifat prisma (jumlah sisi, rusuk, titik sudut) untuk data tabel.
 
 ## 🏗️ Fase 2: Struktur HTML (Bobot 25% + 25%)
 *Target: Menggunakan tag semantik & memuat 5 elemen wajib (Link, List, Tabel, Form, Gambar).*
 
 - [ ] **Kerangka Dasar**
-    - [ ] Buat struktur HTML5 (`<!DOCTYPE html>`, `html`, `head`, `body`).
-    - [ ] Tambahkan meta tags (viewport, charset).
+    - [x] Buat struktur HTML5 (`<!DOCTYPE html>`, `html`, `head`, `body`).
+    - [x] Tambahkan meta tags (viewport, charset).
     - [ ] Hubungkan file CSS (`<link>`) dan JS (`<script>`).
 - [ ] **Header Section** (`<header>`)
     - [ ] Tambahkan Judul Utama (`<h1>`).
