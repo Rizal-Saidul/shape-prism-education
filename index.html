@@ -1,74 +1,849 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Shape Prism Education</title>
+    <title>Edukasi Prisma - Pembelajaran Bangun Ruang</title>
+
+    <style>
+      /**
+         * ==================== DOKUMENTASI CSS ====================
+         * Stylesheet untuk halaman Edukasi Prisma
+         * 
+         * STRUKTUR:
+         * 1. Root Variables - Warna dan tema
+         * 2. Reset & Base - Reset CSS default
+         * 3. Typography - Gaya teks
+         * 4. Layout - Container dan spacing
+         * 5. Components - Tombol, form, dll
+         * 6. Animations - Animasi sederhana
+         * 7. Responsive - Desain mobile-friendly
+         */
+
+      /* ==================== 1. ROOT VARIABLES ====================
+           Mendefinisikan warna dan nilai yang dapat digunakan di seluruh CSS
+        */
+      :root {
+        --primary: #1a3d63; /* Warna biru gelap utama */
+        --secondary: #4a7fa7; /* Warna biru muda */
+        --accent: #b3cfe5; /* Warna aksen terang */
+        --text-dark: #0a1931; /* Warna teks gelap */
+        --background: #f6fafd; /* Warna latar belakang */
+        --white: #ffffff; /* Warna putih */
+        --success: #28a745; /* Hijau untuk jawaban benar */
+        --error: #dc3545; /* Merah untuk jawaban salah */
+        --shadow: rgba(26, 61, 99, 0.08);
+        --shadow-lg: rgba(26, 61, 99, 0.15);
+      }
+
+      /* ==================== 2. RESET & BASE ====================
+           Menghapus margin/padding default dan mengatur scrolling smooth
+        */
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth; /* Smooth scrolling saat klik anchor */
+      }
+
+      body {
+        background: linear-gradient(
+          135deg,
+          var(--background) 0%,
+          var(--white) 100%
+        );
+        color: var(--text-dark);
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.65;
+        font-size: 16px;
+        min-height: 100vh;
+      }
+
+      /* ==================== 3. TYPOGRAPHY ====================
+           Gaya untuk heading dan paragraph
+        */
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        color: var(--text-dark);
+        font-weight: 600;
+        line-height: 1.3;
+        margin-bottom: 1rem;
+        margin-top: 1.5rem;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-weight: 700;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      h2 {
+        font-size: 2rem;
+        color: var(--primary);
+        border-bottom: 3px solid var(--accent);
+        padding-bottom: 0.5rem;
+        display: inline-block;
+      }
+
+      h3 {
+        font-size: 1.5rem;
+        color: var(--secondary);
+      }
+
+      p {
+        margin-bottom: 1rem;
+        color: var(--text-dark);
+        text-align: justify;
+      }
+
+      /* ==================== 4. LAYOUT ====================
+           Container utama dan spacing
+        */
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 2rem;
+        display: flex;
+        flex-direction: column;
+        gap: 3rem;
+      }
+
+      /* Gaya umum untuk section */
+      .section {
+        background: var(--white);
+        padding: 2.5rem;
+        border-radius: 12px;
+        box-shadow: 0 4px 15px var(--shadow);
+        border-left: 5px solid var(--secondary);
+        transition: all 0.3s ease;
+      }
+
+      .section:hover {
+        box-shadow: 0 8px 30px var(--shadow-lg);
+        transform: translateY(-2px);
+      }
+
+      /* Welcome section - bagian judul utama */
+      .welcome {
+        text-align: center;
+        padding: 3rem 2rem;
+        background: linear-gradient(
+          135deg,
+          var(--primary) 0%,
+          var(--secondary) 100%
+        );
+        border-radius: 15px;
+        color: var(--white);
+        box-shadow: 0 10px 40px var(--shadow-lg);
+        margin-bottom: 2rem;
+        animation: slideInDown 0.6s ease-out;
+      }
+
+      .welcome h1 {
+        color: var(--white);
+        -webkit-text-fill-color: unset;
+        background: unset;
+        margin: 0.5rem 0;
+        font-size: 3rem;
+      }
+
+      /* List styles */
+      ul,
+      ol {
+        margin-left: 2rem;
+        margin-bottom: 1.5rem;
+      }
+
+      li {
+        margin-bottom: 0.75rem;
+        color: var(--text-dark);
+        line-height: 1.7;
+      }
+
+      ul li {
+        list-style: none;
+        position: relative;
+        padding-left: 1.8rem;
+      }
+
+      ul li:before {
+        content: "→";
+        position: absolute;
+        left: 0;
+        color: var(--secondary);
+        font-weight: bold;
+      }
+
+      /* Table styles */
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 1.5rem 0;
+        box-shadow: 0 2px 10px var(--shadow);
+      }
+
+      thead {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--white);
+      }
+
+      th {
+        padding: 1rem;
+        text-align: left;
+        font-weight: 600;
+      }
+
+      td {
+        padding: 0.8rem 1rem;
+        border-bottom: 1px solid var(--accent);
+      }
+
+      tbody tr:hover {
+        background: var(--accent);
+        transition: all 0.3s ease;
+      }
+
+      /* ==================== 5. EXAM COMPONENTS ====================
+           Gaya untuk exam/kuis section
+        */
+      .exam-section {
+        background: linear-gradient(135deg, var(--white), #f0f4f8);
+        padding: 3rem 2rem;
+        border-radius: 15px;
+        margin-top: 3rem;
+        box-shadow: 0 4px 20px var(--shadow);
+      }
+
+      .exam-intro {
+        text-align: center;
+        font-size: 1.1rem;
+        color: var(--text-dark);
+        margin-bottom: 2rem;
+        padding: 1rem;
+        background: var(--accent);
+        border-radius: 10px;
+      }
+
+      /* Soal/pertanyaan */
+      .exam-question {
+        margin-bottom: 2.5rem;
+        padding: 1.5rem;
+        background: linear-gradient(135deg, var(--white), #f8fafc);
+        border-radius: 10px;
+        border: 2px solid var(--accent);
+        transition: all 0.3s ease;
+      }
+
+      .exam-question:hover {
+        border-color: var(--secondary);
+        box-shadow: 0 4px 15px var(--shadow);
+      }
+
+      .question-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .question-number {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--white);
+        font-weight: bold;
+        font-size: 1.2rem;
+        flex-shrink: 0;
+      }
+
+      .question-text {
+        flex: 1;
+        font-weight: 600;
+        color: var(--text-dark);
+        font-size: 1rem;
+      }
+
+      /* Opsi jawaban */
+      .question-options {
+        display: flex;
+        flex-direction: column;
+        gap: 0.8rem;
+      }
+
+      .option {
+        display: flex;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        background: var(--background);
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .option:hover {
+        background: var(--accent);
+        border-color: var(--secondary);
+        transform: translateX(5px);
+      }
+
+      .option input[type="radio"] {
+        margin-top: 4px;
+        cursor: pointer;
+        accent-color: var(--primary);
+        width: 20px;
+        height: 20px;
+        flex-shrink: 0;
+      }
+
+      .option span {
+        flex: 1;
+        color: var(--text-dark);
+        line-height: 1.5;
+        font-size: 0.95rem;
+      }
+
+      /* Feedback area - area untuk menampilkan jawaban benar/salah */
+      .feedback-area {
+        margin-top: 1rem;
+        padding: 1rem;
+        border-radius: 8px;
+        display: none;
+        animation: slideInUp 0.4s ease-out;
+      }
+
+      .feedback-area.show {
+        display: block;
+      }
+
+      .feedback-area.correct {
+        background: #d4edda;
+        border: 2px solid var(--success);
+        color: #155724;
+      }
+
+      .feedback-area.incorrect {
+        background: #f8d7da;
+        border: 2px solid var(--error);
+        color: #721c24;
+      }
+
+      .feedback-text {
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .feedback-explanation {
+        font-size: 0.9rem;
+        margin-top: 0.5rem;
+        opacity: 0.9;
+      }
+
+      /* ==================== 6. BUTTON STYLES ====================
+           Gaya untuk tombol submit dan reset
+        */
+      .exam-controls {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 3rem;
+        flex-wrap: wrap;
+      }
+
+      button {
+        padding: 1rem 2.5rem;
+        border: none;
+        border-radius: 8px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .btn-submit {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: var(--white);
+        box-shadow: 0 4px 15px var(--shadow-lg);
+      }
+
+      .btn-submit:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px var(--shadow-lg);
+      }
+
+      .btn-reset {
+        background: var(--accent);
+        color: var(--primary);
+        border: 2px solid var(--secondary);
+      }
+
+      .btn-reset:hover {
+        background: var(--secondary);
+        color: var(--white);
+      }
+
+      button:disabled {
+        opacity: 0.6;
+        cursor: not-allowed;
+        transform: none;
+      }
+
+      /* ==================== 7. RESULTS PANEL ====================
+           Gaya untuk panel hasil tes
+        */
+      .results-panel {
+        margin-top: 3rem;
+        padding: 2rem;
+        background: linear-gradient(135deg, var(--accent), var(--white));
+        border-radius: 12px;
+        box-shadow: 0 6px 20px var(--shadow-lg);
+        animation: slideInUp 0.6s ease-out;
+      }
+
+      .results-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 3px solid var(--secondary);
+      }
+
+      .score-display {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 2rem;
+        margin-top: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .score-circle {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 150px;
+        height: 150px;
+        border-radius: 50%;
+        border: 3px solid var(--secondary);
+        background: linear-gradient(
+          135deg,
+          rgba(255, 255, 255, 0.9),
+          rgba(255, 255, 255, 0.7)
+        );
+        box-shadow: 0 8px 30px var(--shadow-lg);
+      }
+
+      .score-number {
+        font-size: 2.5rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      .score-text {
+        font-size: 0.9rem;
+        color: var(--secondary);
+        margin-top: 0.5rem;
+      }
+
+      .score-percentage {
+        font-size: 3.5rem;
+        font-weight: bold;
+        color: var(--primary);
+      }
+
+      /* Feedback hasil */
+      .results-feedback {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        border-radius: 10px;
+        text-align: center;
+        font-size: 1.1rem;
+        font-weight: 600;
+      }
+
+      .results-feedback.excellent {
+        background: #d4edda;
+        color: #155724;
+        border: 2px solid var(--success);
+      }
+
+      .results-feedback.good {
+        background: #cce5ff;
+        color: #004085;
+        border: 2px solid #0066cc;
+      }
+
+      .results-feedback.fair {
+        background: #fff3cd;
+        color: #856404;
+        border: 2px solid #ffc107;
+      }
+
+      .results-feedback.needs-improvement {
+        background: #f8d7da;
+        color: #721c24;
+        border: 2px solid var(--error);
+      }
+
+      /* Detail hasil jawaban */
+      .detailed-results {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: var(--white);
+        border-radius: 10px;
+        border-left: 5px solid var(--secondary);
+      }
+
+      .result-item {
+        padding: 0.8rem;
+        margin-bottom: 0.8rem;
+        border-radius: 6px;
+        background: var(--background);
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .result-item.correct {
+        border-left: 4px solid var(--success);
+      }
+
+      .result-item.incorrect {
+        border-left: 4px solid var(--error);
+      }
+
+      .result-icon {
+        font-size: 1.5rem;
+        flex-shrink: 0;
+      }
+
+      .result-text {
+        flex: 1;
+      }
+
+      .result-question {
+        font-weight: 600;
+        color: var(--text-dark);
+      }
+
+      .result-status {
+        font-size: 0.85rem;
+        font-weight: 500;
+        margin-top: 0.3rem;
+      }
+
+      .result-status.correct {
+        color: #155724;
+      }
+
+      .result-status.incorrect {
+        color: #721c24;
+      }
+
+      /* Rekomendasi */
+      .recommendations {
+        margin: 2rem 0;
+        padding: 1.5rem;
+        background: var(--white);
+        border-radius: 10px;
+        border-left: 5px solid var(--secondary);
+      }
+
+      .recommendation-item {
+        padding: 1rem;
+        margin-bottom: 1rem;
+        background: var(--accent);
+        border-radius: 8px;
+        border: 2px solid var(--secondary);
+        color: var(--text-dark);
+        line-height: 1.6;
+      }
+
+      .recommendation-item strong {
+        color: var(--primary);
+      }
+
+      /* ==================== 8. ANIMATIONS ====================
+           Animasi CSS sederhana
+        */
+      @keyframes slideInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes slideInUp {
+        from {
+          opacity: 0;
+          transform: translateY(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes fadeInScale {
+        from {
+          opacity: 0;
+          transform: scale(0.9);
+        }
+        to {
+          opacity: 1;
+          transform: scale(1);
+        }
+      }
+
+      /* ==================== 9. RESPONSIVE DESIGN ====================
+           Media queries untuk mobile dan tablet
+        */
+      @media (max-width: 768px) {
+        .container {
+          padding: 1.5rem;
+          gap: 2rem;
+        }
+
+        h1 {
+          font-size: 2rem;
+        }
+
+        h2 {
+          font-size: 1.5rem;
+        }
+
+        .welcome h1 {
+          font-size: 2rem;
+        }
+
+        .section {
+          padding: 1.5rem;
+        }
+
+        .exam-section {
+          padding: 1.5rem 1rem;
+        }
+
+        .question-text {
+          font-size: 0.95rem;
+        }
+
+        .score-circle {
+          width: 120px;
+          height: 120px;
+        }
+
+        .score-number {
+          font-size: 2rem;
+        }
+
+        .score-percentage {
+          font-size: 2.5rem;
+        }
+
+        .exam-controls {
+          flex-direction: column;
+        }
+
+        button {
+          width: 100%;
+        }
+
+        table {
+          font-size: 0.85rem;
+        }
+
+        th,
+        td {
+          padding: 0.8rem;
+        }
+      }
+
+      @media (max-width: 480px) {
+        body {
+          font-size: 14px;
+        }
+
+        .container {
+          padding: 1rem;
+          gap: 1.5rem;
+        }
+
+        h1 {
+          font-size: 1.5rem;
+        }
+
+        h2 {
+          font-size: 1.3rem;
+        }
+
+        .welcome h1 {
+          font-size: 1.5rem;
+        }
+
+        .section {
+          padding: 1rem;
+        }
+
+        .exam-question {
+          padding: 1rem;
+        }
+
+        .question-number {
+          width: 35px;
+          height: 35px;
+          font-size: 1rem;
+        }
+
+        .score-circle {
+          width: 100px;
+          height: 100px;
+        }
+
+        .score-number {
+          font-size: 1.5rem;
+        }
+
+        .score-percentage {
+          font-size: 2rem;
+        }
+
+        button {
+          padding: 0.8rem 1.5rem;
+          font-size: 0.9rem;
+        }
+
+        ul,
+        ol {
+          margin-left: 1.2rem;
+        }
+
+        table {
+          font-size: 0.75rem;
+          overflow-x: auto;
+          display: block;
+        }
+      }
+
+      /* Print styles */
+      @media print {
+        body {
+          background: var(--white);
+        }
+
+        .section {
+          box-shadow: none;
+          border: 1px solid var(--accent);
+          page-break-inside: avoid;
+        }
+
+        button {
+          display: none;
+        }
+      }
+    </style>
   </head>
   <body>
     <div class="container">
-      <!-- welcome prisma -->
-      <div>selamat datang di pembelajaran prisma</div>
-
-      <!-- pengertian prisma -->
-      <div>
-        <h1>Pengertian Prisma</h1>
-        <p>
-          Secara umum, pengertian prisma adalah bangun ruang tiga dimensi yang
-          terbentuk dari dua bangun datar sejajar yang kongruen (sama persis)
-          sebagai alas dan tutupnya, sementara sisi tegaknya membentuk bidang
-          lateral yang menghubungkan kedua alas tersebut. <br />
-          bangun prisma sendiri disesuaikan dengan bentuk alasnya. Jika alasnya
-          berbentuk segitiga, maka disebut prisma segitiga. Jika alasnya
-          berbentuk segilima, maka disebut prisma segilima.
+      <!-- SECTION: WELCOME ====================
+             Bagian pembuka dengan judul utama
+        -->
+      <div class="welcome">
+        <h1>🎓 EDUKASI PRISMA</h1>
+        <p
+          style="
+            font-size: 1.3rem;
+            margin-top: 1rem;
+            color: rgba(255, 255, 255, 0.9);
+          "
+        >
+          Pembelajaran Interaktif Bangun Ruang Prisma
         </p>
       </div>
 
-      <!-- Unsur Unsur Prisma -->
-      <div>
-        <h1>Unsur-Unsur Prisma</h1>
-        <p>sebuah prisma memiliki unsru berikut</p>
+      <!-- SECTION: PENGERTIAN PRISMA ====================
+             Definisi dan penjelasan dasar tentang prisma
+        -->
+      <div class="section">
+        <h2>📚 Pengertian Prisma</h2>
+        <p>
+          Prisma adalah bangun ruang tiga dimensi yang terbentuk dari dua bangun
+          datar sejajar yang kongruen (sama persis) sebagai alas dan tutupnya,
+          sementara sisi tegaknya membentuk bidang lateral yang menghubungkan
+          kedua alas tersebut.
+        </p>
+        <p>
+          Nama prisma ditentukan berdasarkan bentuk alasnya. Jika alasnya
+          berbentuk segitiga, maka disebut prisma segitiga. Jika alasnya
+          berbentuk segilima, maka disebut prisma segilima, dan seterusnya.
+        </p>
+      </div>
+
+      <!-- SECTION: UNSUR-UNSUR PRISMA ====================
+             Penjelasan tentang elemen-elemen prisma
+        -->
+      <div class="section">
+        <h2>🔍 Unsur-Unsur Prisma</h2>
+        <p>Sebuah prisma memiliki unsur-unsur berikut:</p>
         <ul>
           <li>
-            Alas dan Tutup: Dua bidang sejajar dan kongruen yang menentukan
-            bentuk prisma.Alas dan Tutup: Dua bidang sejajar dan kongruen yang
-            menentukan bentuk prisma.
+            <strong>Alas dan Tutup:</strong> Dua bidang sejajar dan kongruen
+            yang menentukan bentuk prisma.
           </li>
           <li>
-            Sisi Tegak: Bidang datar yang menghubungkan alas dan tutup prisma.
-          </li>
-          <li>Rusuk: Garis pertemuan antara dua sisi prisma.</li>
-          <li>
-            Titik Sudut: Titik pertemuan antara tiga atau lebih rusuk prisma.
+            <strong>Sisi Tegak:</strong> Bidang datar yang menghubungkan alas
+            dan tutup prisma.
           </li>
           <li>
-            Diagonal Ruang: Garis yang menghubungkan antara dua titik sudut yang
-            berlawanan dalam prisma.
+            <strong>Rusuk:</strong> Garis pertemuan antara dua sisi prisma.
           </li>
           <li>
-            Diagonal Bidang/Sisi: Garis yang menghubungan antara dua titik sudut
-            yang berhadapan pada setiap sisi prisma.
+            <strong>Titik Sudut:</strong> Titik pertemuan antara tiga atau lebih
+            rusuk prisma.
           </li>
           <li>
-            Bidang Diagonal: Bidang yang dibatasi oleh rusuk dan diagonal
-            bidang.
+            <strong>Diagonal Ruang:</strong> Garis yang menghubungkan dua titik
+            sudut yang berlawanan dalam prisma.
+          </li>
+          <li>
+            <strong>Diagonal Bidang:</strong> Garis yang menghubungkan dua titik
+            sudut yang berhadapan pada setiap sisi prisma.
           </li>
         </ul>
       </div>
 
-      <!-- Sifat sifat Prisma  -->
-      <div>
-        <h1>Sifat-Sifat Prisma</h1>
+      <!-- SECTION: SIFAT-SIFAT PRISMA ====================
+             Karakteristik dan sifat-sifat umum prisma
+        -->
+      <div class="section">
+        <h2>⭐ Sifat-Sifat Prisma</h2>
         <p>
-          Sama halnya seperti kubus dan balok, prisma juga memiliki sifat-sifat,
-          lho. Sifat-sifat atau ciri-ciri prisma inilah yang membedakannya dari
-          bangun ruang lainnya. Berikut sifat-sifat umum prisma yang bisa kamu
-          ketahui:
+          Prisma memiliki sifat-sifat khusus yang membedakannya dari bangun
+          ruang lainnya:
         </p>
         <ul>
           <li>
-            Memiliki dua alas yang sejajar dan kongruen. Kongruen itu artinya
-            sama dan sebangun, ya.
+            Memiliki dua alas yang sejajar dan kongruen (sama dan sebangun).
           </li>
           <li>
             Sisi-sisi tegaknya berupa sisi datar atau sisi lengkung, tergantung
@@ -77,41 +852,575 @@
           <li>Jumlah rusuk pada prisma bergantung pada bentuk alasnya.</li>
           <li>
             Semua sudut antara sisi tegak dan alas berbentuk sudut siku-siku
-            (kecuali pada prisma miring).
+            pada prisma tegak.
           </li>
         </ul>
       </div>
 
-      <!-- jenis jenis prisma -->
-      <div>
-        <h1>Jenis-jenis Prisma</h1>
-        <p>
-          Macam-macam prisma dibedakan berdasarkan bentuk alas dan tutupnya, di
-          antaranya sebagai berikut:
-        </p>
-
-        <!-- 1. prisma segitiga -->
-        <div>ini prisma segitiga</div>
-        <!-- 2. prisma segiempat -->
-        <div>ini prisma segi empat</div>
-        <!-- 3. prisma segilima -->
-        <div>ini prisma segi n</div>
-        <!-- 4. prisma segi n -->
-        <div>ini prisma segi n</div>
-        <!-- 5. tabung -->
-        <div>ini tabung</div>
-      </div>
-
-      <!-- rumus volume dan luas Prisma -->
-      <div>
-        <h1>Rumus Volume dan Luar permukaan prisma</h1>
+      <!-- SECTION: RUMUS VOLUME DAN LUAS ====================
+             Tabel rumus untuk berbagai jenis prisma
+        -->
+      <div class="section">
+        <h2>📐 Rumus Volume dan Luas Permukaan Prisma</h2>
         <p>
           Untuk menghitung ukuran prisma, terdapat dua rumus yang dapat
-          digunakan, yaitu rumus volume prisma dan rumus luas permukaan prisma.
+          digunakan:
         </p>
+
+        <table>
+          <thead>
+            <tr>
+              <th>Jenis Prisma</th>
+              <th>Rumus Volume</th>
+              <th>Rumus Luas Permukaan</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prisma Segitiga</td>
+              <td>V = (½ × a × t) × T</td>
+              <td>LP = (2 × La) + (Ka × T)</td>
+            </tr>
+            <tr>
+              <td>Prisma Segiempat</td>
+              <td>V = (p × l) × T</td>
+              <td>LP = (2 × p × l) + (2 × (p+l) × T)</td>
+            </tr>
+            <tr>
+              <td>Prisma Segilima</td>
+              <td>V = La × T</td>
+              <td>LP = (2 × La) + (Ka × T)</td>
+            </tr>
+            <tr>
+              <td>Prisma Segi-n</td>
+              <td>V = La × T</td>
+              <td>LP = (2 × La) + (Ka × T)</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h3>Keterangan Rumus:</h3>
+        <ul>
+          <li><strong>V</strong> = Volume</li>
+          <li><strong>LP</strong> = Luas Permukaan</li>
+          <li><strong>La</strong> = Luas Alas</li>
+          <li><strong>Ka</strong> = Keliling Alas</li>
+          <li><strong>T</strong> = Tinggi Prisma</li>
+          <li>
+            <strong>a</strong> = Alas segitiga, <strong>t</strong> = Tinggi
+            segitiga
+          </li>
+          <li><strong>p</strong> = Panjang, <strong>l</strong> = Lebar</li>
+        </ul>
       </div>
 
-      <!-- contoh soal prisma -->
+      <!-- SECTION: EXAM/QUIZ ====================
+             Bagian kuis interaktif untuk menguji pemahaman
+        -->
+      <div class="exam-section">
+        <h1>📝 Uji Pemahaman Anda</h1>
+        <p class="exam-intro">
+          Jawab semua pertanyaan di bawah untuk menguji pemahaman Anda tentang
+          materi prisma. Setiap jawaban akan langsung memberikan feedback. 🎯
+        </p>
+
+        <div id="exam-container"></div>
+
+        <!-- Tombol submit dan reset -->
+        <div class="exam-controls">
+          <button class="btn-submit" id="submit-exam">
+            📊 Lihat Hasil Tes
+          </button>
+          <button class="btn-reset" id="reset-exam">🔄 Mulai Ulang</button>
+        </div>
+
+        <!-- Panel hasil tes -->
+        <div class="results-panel" id="results-panel" style="display: none">
+          <div class="results-header">
+            <h2>📈 Hasil Tes Anda</h2>
+            <div class="score-display">
+              <div class="score-circle">
+                <div class="score-number" id="score-number">0</div>
+                <div class="score-text">dari 10</div>
+              </div>
+              <div class="score-percentage" id="percentage">0%</div>
+            </div>
+          </div>
+          <div class="results-feedback" id="results-feedback"></div>
+          <div class="detailed-results">
+            <h3>📊 Detail Jawaban Anda:</h3>
+            <div id="detailed-results"></div>
+          </div>
+          <div class="recommendations">
+            <h3>💡 Rekomendasi:</h3>
+            <div id="recommendations"></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION: FOOTER ====================
+             Footer dengan informasi tambahan
+        -->
+      <footer
+        style="
+          text-align: center;
+          padding: 2rem;
+          background: linear-gradient(135deg, var(--primary), var(--secondary));
+          color: var(--white);
+          border-radius: 10px;
+          margin-top: 3rem;
+        "
+      >
+        <p style="margin: 0.5rem 0"><strong>📚 Edukasi Prisma</strong></p>
+        <p style="font-size: 0.9rem; margin: 0.5rem 0">
+          Materi pembelajaran interaktif untuk memahami bangun ruang prisma
+        </p>
+        <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.9">
+          © 2025 | Selamat belajar! 🎓
+        </p>
+      </footer>
     </div>
+
+    <script>
+      /**
+       * ==================== DOKUMENTASI JAVASCRIPT ====================
+       * Script untuk fungsionalitas quiz/exam interaktif
+       *
+       * FITUR:
+       * 1. Rendering soal secara dinamis
+       * 2. Validasi jawaban real-time
+       * 3. Perhitungan skor
+       * 4. Tampilan hasil dengan feedback
+       *
+       * STRUKTUR:
+       * - questionData: Array berisi data soal
+       * - correctAnswers: Object berisi jawaban yang benar
+       * - Fungsi-fungsi utama: render, check, reset
+       */
+
+      // ==================== DATA SOAL ====================
+      // Array berisi semua pertanyaan dalam quiz
+      const questionData = [
+        {
+          id: "q1",
+          text: "Apa yang dimaksud dengan prisma?",
+          options: {
+            a: "Bangun datar dua dimensi dengan sisi sejajar",
+            b: "Bangun ruang 3D dengan dua alas kongruen yang sejajar dan sisi tegak",
+            c: "Bangun ruang yang hanya memiliki satu alas segitiga",
+            d: "Bangun datar dengan keliling sama dengan tinggi",
+          },
+          correct: "b",
+        },
+        {
+          id: "q2",
+          text: 'Apa yang dimaksud dengan "kongruen" dalam konteks prisma?',
+          options: {
+            a: "Bentuk yang berbeda tetapi memiliki ukuran yang sama",
+            b: "Bentuk yang lebih besar dari yang lain",
+            c: "Bentuk yang sama persis dan sebangun (identik)",
+            d: "Istilah untuk alas yang melengkung",
+          },
+          correct: "c",
+        },
+        {
+          id: "q3",
+          text: "Jika alas prisma berbentuk segilima, maka prisma tersebut disebut...",
+          options: {
+            a: "Prisma segitiga",
+            b: "Prisma segiempat",
+            c: "Prisma segilima",
+            d: "Prisma segienam",
+          },
+          correct: "c",
+        },
+        {
+          id: "q4",
+          text: "Rusuk prisma adalah...",
+          options: {
+            a: "Garis pertemuan antara dua sisi prisma",
+            b: "Bidang datar yang membentuk permukaan prisma",
+            c: "Sudut yang terbentuk antara dua rusuk",
+            d: "Jarak dari alas ke tutup prisma",
+          },
+          correct: "a",
+        },
+        {
+          id: "q5",
+          text: "Apa perbedaan antara diagonal ruang dan diagonal bidang?",
+          options: {
+            a: "Diagonal ruang lebih pendek dari diagonal bidang",
+            b: "Diagonal ruang menghubungkan titik berlawanan dalam prisma, diagonal bidang hanya pada satu sisi",
+            c: "Tidak ada perbedaan, hanya nama berbeda",
+            d: "Diagonal ruang hanya ada pada prisma miring",
+          },
+          correct: "b",
+        },
+        {
+          id: "q6",
+          text: "Manakah yang bukan sifat umum prisma?",
+          options: {
+            a: "Memiliki dua alas yang sejajar dan kongruen",
+            b: "Sisi tegaknya berupa sisi datar atau sisi lengkung",
+            c: "Memiliki satu alas dan satu titik puncak",
+            d: "Jumlah rusuk bergantung pada bentuk alas",
+          },
+          correct: "c",
+        },
+        {
+          id: "q7",
+          text: "Sudut antara sisi tegak dan alas pada prisma tegak adalah...",
+          options: {
+            a: "Sudut siku-siku (90°)",
+            b: "Sudut tumpul (lebih dari 90°)",
+            c: "Sudut lancip (kurang dari 90°)",
+            d: "Bervariasi tergantung bentuk alas",
+          },
+          correct: "a",
+        },
+        {
+          id: "q8",
+          text: "Berapa banyak sisi yang dimiliki prisma segiempat?",
+          options: {
+            a: "4 sisi",
+            b: "5 sisi",
+            c: "6 sisi",
+            d: "6 sisi (2 alas + 4 sisi tegak)",
+          },
+          correct: "d",
+        },
+        {
+          id: "q9",
+          text: "Prisma segitiga memiliki berapa rusuk?",
+          options: {
+            a: "6 rusuk",
+            b: "8 rusuk",
+            c: "9 rusuk",
+            d: "9 rusuk (3 alas + 3 tutup + 3 tegak)",
+          },
+          correct: "d",
+        },
+        {
+          id: "q10",
+          text: "Rumus volume prisma secara umum adalah...",
+          options: {
+            a: "V = Luas Alas × Tinggi Prisma",
+            b: "V = Keliling Alas × Tinggi Prisma",
+            c: "V = (Luas Alas + Luas Tutup) × Tinggi",
+            d: "V = Luas Alas × Luas Tutup × Tinggi",
+          },
+          correct: "a",
+        },
+      ];
+
+      // Penjelasan untuk setiap pertanyaan
+      const explanations = {
+        q1: "Prisma adalah bangun ruang 3D dengan dua alas kongruen (sama persis) yang sejajar dan sisi tegak yang menghubungkannya.",
+        q2: "Kongruen berarti bentuk dan ukuran yang sama persis, bukan hanya mirip.",
+        q3: "Nama prisma ditentukan dari bentuk alasnya. Alas segilima = prisma segilima.",
+        q4: "Rusuk adalah garis pertemuan antara dua sisi. Berbeda dengan sisi (bidang) dan sudut (pertemuan rusuk).",
+        q5: "Diagonal ruang menghubungkan titik sudut berlawanan dalam ruang 3D, sedangkan diagonal bidang hanya pada permukaan 2D.",
+        q6: 'Ciri "satu alas dan satu titik puncak" adalah sifat limas, bukan prisma.',
+        q7: "Pada prisma tegak, sisi tegak selalu membentuk sudut 90° dengan alas.",
+        q8: "Prisma segiempat: 2 alas segiempat + 4 sisi tegak = 6 sisi total.",
+        q9: "Prisma segitiga: 3 rusuk alas + 3 rusuk tutup + 3 rusuk vertikal = 9 rusuk.",
+        q10: "Rumus umum volume prisma adalah Luas Alas × Tinggi Prisma, berlaku untuk semua jenis prisma.",
+      };
+
+      // ==================== FUNGSI UTAMA ====================
+
+      /**
+       * Fungsi untuk merender (menampilkan) semua soal ke halaman
+       * Membuat HTML untuk setiap pertanyaan dan menempatkannya di DOM
+       */
+      function renderQuestions() {
+        const examContainer = document.getElementById("exam-container");
+        let html = "";
+
+        questionData.forEach((question, index) => {
+          html += `
+                    <div class="exam-question">
+                        <div class="question-header">
+                            <span class="question-number">${index + 1}</span>
+                            <span class="question-text">${question.text}</span>
+                        </div>
+                        <div class="question-options">
+                `;
+
+          // Loop untuk setiap opsi jawaban
+          Object.entries(question.options).forEach(([key, value]) => {
+            html += `
+                        <label class="option">
+                            <input type="radio" name="${question.id}" value="${key}">
+                            <span>${value}</span>
+                        </label>
+                    `;
+          });
+
+          html += `
+                        </div>
+                        <div class="feedback-area" id="feedback-${question.id}"></div>
+                    </div>
+                `;
+        });
+
+        examContainer.innerHTML = html;
+
+        // Tambah event listener ke setiap radio button
+        document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+          radio.addEventListener("change", function () {
+            showFeedback(this.name, this.value);
+          });
+        });
+      }
+
+      /**
+       * Fungsi untuk menampilkan feedback langsung saat user memilih jawaban
+       * @param {string} questionId - ID pertanyaan (q1, q2, dll)
+       * @param {string} selectedValue - Nilai jawaban yang dipilih (a, b, c, d)
+       */
+      function showFeedback(questionId, selectedValue) {
+        const feedbackArea = document.getElementById(`feedback-${questionId}`);
+        const question = questionData.find((q) => q.id === questionId);
+
+        if (!feedbackArea || !question) return;
+
+        const isCorrect = selectedValue === question.correct;
+        const correctOptionKey = question.correct;
+        const correctOptionText = question.options[correctOptionKey];
+
+        feedbackArea.classList.add("show");
+
+        if (isCorrect) {
+          feedbackArea.classList.remove("incorrect");
+          feedbackArea.classList.add("correct");
+          feedbackArea.innerHTML = `
+                    <div class="feedback-text">✅ Jawaban Benar!</div>
+                    <div class="feedback-explanation">${explanations[questionId]}</div>
+                `;
+        } else {
+          feedbackArea.classList.remove("correct");
+          feedbackArea.classList.add("incorrect");
+          feedbackArea.innerHTML = `
+                    <div class="feedback-text">❌ Jawaban Salah</div>
+                    <div class="feedback-explanation">
+                        <strong>Penjelasan:</strong> ${explanations[questionId]}<br>
+                        <strong>Jawaban yang benar:</strong> ${correctOptionText}
+                    </div>
+                `;
+        }
+      }
+
+      /**
+       * Fungsi untuk mengecek semua jawaban dan menampilkan hasil
+       * Dipanggil saat user klik tombol "Lihat Hasil Tes"
+       */
+      function checkAnswers() {
+        let score = 0;
+        const results = {};
+        let unansweredCount = 0;
+
+        // Loop setiap pertanyaan dan cek jawabannya
+        questionData.forEach((question) => {
+          const selectedAnswer = document.querySelector(
+            `input[name="${question.id}"]:checked`
+          );
+
+          if (!selectedAnswer) {
+            results[question.id] = { answered: false };
+            unansweredCount++;
+          } else {
+            const isCorrect = selectedAnswer.value === question.correct;
+            results[question.id] = { answered: true, isCorrect };
+
+            if (isCorrect) {
+              score++;
+            }
+          }
+        });
+
+        // Periksa apakah ada pertanyaan yang belum dijawab
+        if (unansweredCount > 0) {
+          alert(`⚠️ Ada ${unansweredCount} pertanyaan yang belum dijawab!`);
+          return;
+        }
+
+        // Disable semua input setelah submit
+        document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+          radio.disabled = true;
+        });
+        document.getElementById("submit-exam").disabled = true;
+
+        // Tampilkan hasil
+        showResults(score, results);
+      }
+
+      /**
+       * Fungsi untuk menampilkan panel hasil tes
+       * @param {number} score - Skor yang diperoleh
+       * @param {object} results - Object berisi hasil setiap pertanyaan
+       */
+      function showResults(score, results) {
+        const percentage = Math.round((score / questionData.length) * 100);
+        const resultPanel = document.getElementById("results-panel");
+
+        // Update skor
+        document.getElementById("score-number").textContent = score;
+        document.getElementById("percentage").textContent = `${percentage}%`;
+
+        // Tentukan feedback berdasarkan skor
+        const feedbackDiv = document.getElementById("results-feedback");
+        let feedbackClass = "needs-improvement";
+        let feedbackText = "";
+
+        if (percentage === 100) {
+          feedbackClass = "excellent";
+          feedbackText =
+            "🏆 SEMPURNA! Anda menguasai materi prisma dengan sangat baik!";
+        } else if (percentage >= 80) {
+          feedbackClass = "excellent";
+          feedbackText =
+            "🎉 Luar Biasa! Pemahaman Anda tentang prisma sangat baik!";
+        } else if (percentage >= 60) {
+          feedbackClass = "good";
+          feedbackText = "👍 Bagus! Anda sudah memahami sebagian besar materi.";
+        } else {
+          feedbackClass = "fair";
+          feedbackText =
+            "📚 Terus belajar! Pelajari kembali konsep-konsep dasar prisma.";
+        }
+
+        feedbackDiv.className = `results-feedback ${feedbackClass}`;
+        feedbackDiv.innerHTML = feedbackText;
+
+        // Tampilkan detail hasil
+        showDetailedResults(results);
+
+        // Tampilkan rekomendasi
+        showRecommendations(percentage);
+
+        // Tampilkan panel hasil
+        resultPanel.style.display = "block";
+
+        // Scroll ke panel hasil
+        resultPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+
+      /**
+       * Fungsi untuk menampilkan detail jawaban setiap pertanyaan
+       */
+      function showDetailedResults(results) {
+        const detailedDiv = document.getElementById("detailed-results");
+        let html = "";
+
+        questionData.forEach((question, index) => {
+          const result = results[question.id];
+
+          let statusIcon = "❌";
+          let statusClass = "incorrect";
+          let statusText = "Belum dijawab";
+
+          if (result && result.answered) {
+            statusIcon = result.isCorrect ? "✅" : "❌";
+            statusClass = result.isCorrect ? "correct" : "incorrect";
+            statusText = result.isCorrect ? "Benar" : "Salah";
+          }
+
+          html += `
+                    <div class="result-item ${statusClass}">
+                        <div class="result-icon">${statusIcon}</div>
+                        <div class="result-text">
+                            <div class="result-question">Soal ${index + 1}</div>
+                            <div class="result-status ${statusClass}">${statusText}</div>
+                        </div>
+                    </div>
+                `;
+        });
+
+        detailedDiv.innerHTML = html;
+      }
+
+      /**
+       * Fungsi untuk menampilkan rekomendasi pembelajaran
+       */
+      function showRecommendations(percentage) {
+        const recommendationsDiv = document.getElementById("recommendations");
+        let html = "";
+
+        if (percentage >= 80) {
+          html = `
+                    <div class="recommendation-item">
+                        <strong>🌟 Anda sudah mahir!</strong> Lanjutkan dengan mempelajari topik bangun ruang lainnya seperti Limas, Kerucut, dan Bola.
+                    </div>
+                `;
+        } else if (percentage >= 60) {
+          html = `
+                    <div class="recommendation-item">
+                        <strong>📖 Saran:</strong> Pelajari kembali bagian yang kurang dipahami. Fokus pada rumus-rumus dan unsur-unsur prisma.
+                    </div>
+                `;
+        } else {
+          html = `
+                    <div class="recommendation-item">
+                        <strong>💡 Rekomendasi Penting:</strong> Mulai dari awal dengan fokus pada:
+                        <ul style="margin-left: 1rem; margin-top: 0.5rem;">
+                            <li>Pengertian dasar prisma</li>
+                            <li>Unsur-unsur prisma</li>
+                            <li>Sifat-sifat prisma</li>
+                            <li>Rumus volume dan luas permukaan</li>
+                        </ul>
+                    </div>
+                `;
+        }
+
+        recommendationsDiv.innerHTML = html;
+      }
+
+      /**
+       * Fungsi untuk mereset/mengulang exam
+       * Menghapus semua jawaban dan menampilkan soal dari awal
+       */
+      function resetExam() {
+        // Hapus semua jawaban
+        document.querySelectorAll('input[type="radio"]').forEach((radio) => {
+          radio.checked = false;
+          radio.disabled = false;
+        });
+
+        // Hapus semua feedback
+        document.querySelectorAll(".feedback-area").forEach((feedback) => {
+          feedback.classList.remove("show", "correct", "incorrect");
+          feedback.innerHTML = "";
+        });
+
+        // Sembunyikan panel hasil
+        document.getElementById("results-panel").style.display = "none";
+
+        // Enable submit button
+        document.getElementById("submit-exam").disabled = false;
+
+        // Scroll ke atas exam
+        document
+          .querySelector(".exam-section")
+          .scrollIntoView({ behavior: "smooth" });
+      }
+
+      // ==================== EVENT LISTENERS ====================
+
+      // Ketika DOM sudah siap, render soal-soal
+      document.addEventListener("DOMContentLoaded", function () {
+        renderQuestions();
+
+        // Tambah event listener untuk tombol submit
+        document
+          .getElementById("submit-exam")
+          .addEventListener("click", checkAnswers);
+
+        // Tambah event listener untuk tombol reset
+        document
+          .getElementById("reset-exam")
+          .addEventListener("click", resetExam);
+      });
+    </script>
   </body>
 </html>
