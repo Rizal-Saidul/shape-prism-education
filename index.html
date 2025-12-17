@@ -615,6 +615,86 @@
         }
       }
 
+      /* ==================== 8.5. PRISMA 3D MODEL STYLES ====================
+           Gaya untuk bagian visualisasi model 3D prisma
+        */
+      .prisma-container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 2.5rem;
+        margin-top: 2rem;
+        animation: fadeInScale 0.8s ease-out;
+      }
+
+      .prisma-item {
+        background: linear-gradient(135deg, var(--white), rgba(179, 207, 229, 0.1));
+        border-radius: 15px;
+        padding: 1.5rem;
+        border: 2px solid var(--accent);
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 12px var(--shadow);
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .prisma-item:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 25px var(--shadow-lg);
+        border-color: var(--secondary);
+      }
+
+      .prisma-item h3 {
+        color: var(--primary);
+        font-size: 1.3rem;
+        margin: 0;
+        text-align: center;
+      }
+
+      .prisma-item p {
+        color: var(--text-dark);
+        font-size: 0.95rem;
+        margin: 0;
+        text-align: justify;
+        line-height: 1.6;
+      }
+
+      .model-3d-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: var(--white);
+        border-radius: 12px;
+        padding: 1rem;
+        border: 1px solid var(--accent);
+        overflow: hidden;
+        min-height: 300px;
+      }
+
+      .sketchfab-embed-wrapper {
+        width: 100%;
+        max-width: 640px;
+        aspect-ratio: 4/3;
+      }
+
+      .sketchfab-embed-wrapper iframe {
+        width: 100% !important;
+        height: 100% !important;
+        border-radius: 10px;
+      }
+
+      .sketchfab-embed-wrapper p {
+        font-size: 0.75rem !important;
+        margin: 0.5rem 0 0 0 !important;
+        padding: 0 !important;
+        text-align: center;
+      }
+
+      .sketchfab-embed-wrapper a {
+        color: #1CAAD9 !important;
+      }
+
       /* ==================== 9. RESPONSIVE DESIGN ====================
            Media queries untuk mobile dan tablet
         */
@@ -676,6 +756,19 @@
         th,
         td {
           padding: 0.8rem;
+        }
+
+        .prisma-container {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .model-3d-wrapper {
+          min-height: 250px;
+        }
+
+        .sketchfab-embed-wrapper {
+          max-width: 100%;
         }
       }
 
@@ -901,6 +994,11 @@
               <td>V = La × T</td>
               <td>LP = (2 × La) + (Ka × T)</td>
             </tr>
+            <tr>
+              <td>Tabung</td>
+              <td>V = π × r² × T</td>
+              <td>LP = (2 × π × r²) + (2 × π × r × T)</td>
+            </tr>
           </tbody>
         </table>
 
@@ -917,6 +1015,62 @@
           </li>
           <li><strong>p</strong> = Panjang, <strong>l</strong> = Lebar</li>
         </ul>
+      </div>
+
+      <!-- SECTION: JENIS-JENIS PRISMA DENGAN MODEL 3D ====================
+             Visualisasi berbagai jenis prisma dengan model 3D interaktif
+        -->
+      <div class="section">
+        <h2>🎨 Jenis-Jenis Prisma dengan Visualisasi 3D</h2>
+        <p>
+          Berikut adalah berbagai jenis prisma berdasarkan bentuk alasnya. Anda dapat melihat visualisasi model 3D interaktif untuk setiap jenis prisma di bawah ini. Gunakan mouse untuk merotasi dan zoom model 3D!
+        </p>
+
+        <!-- Prisma Segitiga -->
+        <div class="prisma-container">
+          <div class="prisma-item">
+            <h3>Prisma Segitiga</h3>
+            <p>
+              Prisma dengan alas berbentuk segitiga. Memiliki 5 sisi (2 alas berbentuk segitiga dan 3 sisi tegak berbentuk segi empat), 9 rusuk, dan 6 titik sudut.
+            </p>
+            <div class="model-3d-wrapper">
+              <div class="sketchfab-embed-wrapper"> <iframe title="Prisma segitiga" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/b2d8c4fb0bb54c878e98b5eb1a74cacd/embed"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/prisma-segitiga-b2d8c4fb0bb54c878e98b5eb1a74cacd?utm_medium=embed&utm_campaign=share-popup&utm_content=b2d8c4fb0bb54c878e98b5eb1a74cacd" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Prisma segitiga </a> by <a href="https://sketchfab.com/yosimediana?utm_medium=embed&utm_campaign=share-popup&utm_content=b2d8c4fb0bb54c878e98b5eb1a74cacd" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> yosimediana </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=b2d8c4fb0bb54c878e98b5eb1a74cacd" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+            </div>
+          </div>
+
+          <!-- Prisma Segiempat -->
+          <div class="prisma-item">
+            <h3>Prisma Segiempat (Kubus/Balok)</h3>
+            <p>
+              Prisma dengan alas berbentuk segiempat (persegi atau persegi panjang). Memiliki 6 sisi, 12 rusuk, dan 8 titik sudut. Dikenal juga sebagai kubus (jika alasnya persegi) atau balok (jika alasnya persegi panjang).
+            </p>
+            <div class="model-3d-wrapper">
+              <div class="sketchfab-embed-wrapper"> <iframe title="Prisma Segi Empat 3D" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/425be387acdb4f6b8c7cb490e8134d3d/embed"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/prisma-segi-empat-3d-425be387acdb4f6b8c7cb490e8134d3d?utm_medium=embed&utm_campaign=share-popup&utm_content=425be387acdb4f6b8c7cb490e8134d3d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Prisma Segi Empat 3D </a> by <a href="https://sketchfab.com/arisandyk32?utm_medium=embed&utm_campaign=share-popup&utm_content=425be387acdb4f6b8c7cb490e8134d3d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> arisandyk32 </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=425be387acdb4f6b8c7cb490e8134d3d" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+            </div>
+          </div>
+
+          <!-- Prisma Segi Delapan -->
+          <div class="prisma-item">
+            <h3>Prisma Segi Delapan</h3>
+            <p>
+              Prisma dengan alas berbentuk segi delapan (oktagon). Memiliki 10 sisi (2 alas berbentuk segi delapan dan 8 sisi tegak), 24 rusuk, dan 16 titik sudut. Bentuk ini sering ditemukan dalam arsitektur dan desain.
+            </p>
+            <div class="model-3d-wrapper">
+              <div class="sketchfab-embed-wrapper"> <iframe title="prisma segi delapan" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/44a23eaf414d4e5aac3394d3223cf501/embed"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/prisma-segi-delapan-44a23eaf414d4e5aac3394d3223cf501?utm_medium=embed&utm_campaign=share-popup&utm_content=44a23eaf414d4e5aac3394d3223cf501" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> prisma segi delapan </a> by <a href="https://sketchfab.com/rafyramly?utm_medium=embed&utm_campaign=share-popup&utm_content=44a23eaf414d4e5aac3394d3223cf501" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> rafyramly </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=44a23eaf414d4e5aac3394d3223cf501" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+            </div>
+          </div>
+
+          <!-- Tabung -->
+          <div class="prisma-item">
+            <h3>Tabung</h3>
+            <p>
+              Tabung adalah bangun ruang dengan alas dan tutup berbentuk lingkaran yang sejajar dan kongruen, serta sisi tegak berupa permukaan lengkung. Memiliki 3 sisi (2 lingkaran dan 1 sisi lengkung), 2 rusuk, dan tidak memiliki titik sudut.
+            </p>
+            <div class="model-3d-wrapper">
+              <div class="sketchfab-embed-wrapper"> <iframe title="Tabung 3D" frameborder="0" allowfullscreen mozallowfullscreen="true" webkitallowfullscreen="true" allow="autoplay; fullscreen; xr-spatial-tracking" xr-spatial-tracking execution-while-out-of-viewport execution-while-not-rendered web-share width="640" height="480" src="https://sketchfab.com/models/d80d1d9ccc804ea3a0d6df8e75843fe3/embed"> </iframe> <p style="font-size: 13px; font-weight: normal; margin: 5px; color: #4A4A4A;"> <a href="https://sketchfab.com/3d-models/tabung-3d-d80d1d9ccc804ea3a0d6df8e75843fe3?utm_medium=embed&utm_campaign=share-popup&utm_content=d80d1d9ccc804ea3a0d6df8e75843fe3" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> Tabung 3D </a> by <a href="https://sketchfab.com/elinaeka11?utm_medium=embed&utm_campaign=share-popup&utm_content=d80d1d9ccc804ea3a0d6df8e75843fe3" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;"> elinaeka11 </a> on <a href="https://sketchfab.com?utm_medium=embed&utm_campaign=share-popup&utm_content=d80d1d9ccc804ea3a0d6df8e75843fe3" target="_blank" rel="nofollow" style="font-weight: bold; color: #1CAAD9;">Sketchfab</a></p></div>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- SECTION: EXAM/QUIZ ====================
@@ -976,11 +1130,11 @@
           margin-top: 3rem;
         "
       >
-        <p style="margin: 0.5rem 0"><strong>📚 Edukasi Prisma</strong></p>
-        <p style="font-size: 0.9rem; margin: 0.5rem 0">
+        <p style="margin: 0.5rem 0; color: var(--white)"><strong>📚 Edukasi Prisma</strong></p>
+        <p style="font-size: 0.9rem; margin: 0.5rem 0; color: var(--white)">
           Materi pembelajaran interaktif untuk memahami bangun ruang prisma
         </p>
-        <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.9">
+        <p style="font-size: 0.85rem; margin-top: 1rem; opacity: 0.9; color: var(--white)">
           © 2025 | Selamat belajar! 🎓
         </p>
       </footer>
