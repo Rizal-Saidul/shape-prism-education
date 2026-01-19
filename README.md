@@ -1,125 +1,101 @@
-# 📐 Bangun Ruang Prisma - Web Edukasi Sederhana
+# 🎓 Edukasi Prisma
 
-Proyek ini adalah halaman web statis yang bertujuan sebagai sumber belajar matematika sederhana mengenai materi **Bangun Ruang Prisma**. Web ini dirancang untuk memenuhi standar HTML semantik, tata letak estetis, dan konten yang kontekstual.
+Pembelajaran Interaktif Bangun Ruang Prisma - Website edukasi modern untuk belajar tentang konsep prisma dengan visualisasi 3D interaktif.
 
-## 🎯 Tujuan Proyek
-Memenuhi tugas pembuatan web pembelajaran dengan kriteria:
-1. Struktur HTML rapi dan semantik.
-2. Menggunakan CSS untuk tata letak.
-3. Memuat minimal 5 elemen utama HTML (Link, List, Tabel, Form, Gambar).
-4. Konten relevan dengan matematika (Prisma).
-5. Dokumentasi kode (komentar) yang jelas.
+## 📚 Tentang Projek
 
-## 📚 Cakupan Materi
-Konten diambil dan dirangkum dari [Ruangguru Blog](https://www.ruangguru.com/blog/pengertian-sifat-dan-rumus-rumus-prisma), mencakup:
-- **Pengertian Prisma**: Definisi dasar.
-- **Macam-macam Prisma**: Ilustrasi visual.
-- **Sifat-sifat Prisma**: Disajikan dalam bentuk Tabel (Rusuk, Sisi, Titik Sudut).
-- **Rumus**: Luas permukaan dan Volume.
-- **Kuis Mini**: Evaluasi pemahaman sederhana.
+Website edukasi ini dirancang untuk membantu siswa memahami konsep bangun ruang prisma melalui:
+- **Materi lengkap** tentang pengertian, unsur-unsur, dan sifat-sifat prisma
+- **Visualisasi 3D** interaktif untuk berbagai jenis prisma
+- **Kuis interaktif** dengan feedback langsung
+- **Animasi smooth** menggunakan anime.js
 
-## 🛠️ Teknologi yang Digunakan
-- **HTML5**: Struktur utama halaman (Semantic Tags: `<header>`, `<main>`, `<article>`, `<footer>`).
-- **CSS3**: Styling layout, pewarnaan, dan tipografi dengan custom animations.
-- **JavaScript (Vanilla)**: Validasi sederhana untuk form kuis mini.
-- **Anime.js**: Library animasi modern untuk efek interaktif yang elegan.
+## ✨ Fitur
 
-## ✨ Fitur Animasi dengan Anime.js
-Halaman ini dilengkapi dengan animasi modern menggunakan Anime.js v3.2.1:
+- 📖 Materi pembelajaran yang komprehensif
+- 🎨 Visualisasi model 3D interaktif (Sketchfab embeds)
+- 📐 Rumus volume dan luas permukaan dengan tabel
+- 📝 Kuis interaktif dengan 10 soal
+- 🎯 Feedback langsung untuk setiap jawaban
+- 📊 Skor dan rekomendasi pembelajaran
+- 💫 Animasi yang smooth dan modern
+- 📱 Responsive design (mobile-friendly)
 
-### Animasi Halaman Utama
-- **Welcome Section**: Masuk dengan efek elastic bounce dan parallax saat scroll
-- **Heading Animations**: Slide-in dari kiri saat elemen masuk viewport
-- **List Items**: Staggered animation dengan translateX
-- **Table Rows**: Animasi fade-in berurutan dengan hover scale effect
-- **3D Models**: Scale up dengan smooth transition
+## 🚀 Cara Menggunakan
 
-### Efek Interaktif
-- **Hover Effects**: 
-  - Content divs scale dan shadow berubah
-  - Table rows scale 1.02x dengan smooth transition
-  - 3D embeds zoom effect
-- **Scroll Animations**: Elemen animate saat masuk viewport
-- **Parallax**: Welcome section bergerak dengan kecepatan berbeda saat scroll
-- **Focus States**: Interactive glow animation pada input dan buttons
-
-### Fitur Tambahan
-- Smooth page load dengan staggered animations
-- Responsive animation adjustments untuk mobile
-- Page visibility detection (pause/resume animations)
-- Custom utilities classes untuk animasi manual
-
-## 🚀 Cara Menjalankan
-1. Clone atau download repository ini.
-2. Buka file `index.html` menggunakan browser (Chrome/Edge/Firefox).
-3. Untuk pengalaman coding, buka folder proyek menggunakan VS Code.
-
-## 📖 Dokumentasi Animasi
-
-### File-file yang Terlibat
-- `index.html`: Link ke Anime.js CDN + struktur HTML
-- `style.css`: Keyframe animations dan utility classes
-- `index.js`: Logika anime.js dan kontroler animasi
-
-### Cara Menggunakan Anime.js dalam Proyek
-```javascript
-// Basic syntax
-anime({
-  targets: '.element',
-  duration: 1000,
-  easing: 'easeOutQuad',
-  opacity: 1,
-  translateY: 0
-});
-
-// Staggered animation
-anime({
-  targets: 'li',
-  delay: anime.stagger(100),
-  opacity: 1,
-  translateX: 0
-});
-
-// Timeline
-const timeline = anime.timeline();
-timeline
-  .add({ targets: '.el1', duration: 1000 })
-  .add({ targets: '.el2', duration: 1000 }, '-=500');
+1. Clone repository ini:
+```bash
+git clone https://github.com/username/shape-prism-education.git
+cd shape-prism-education
 ```
 
-### Mengaktifkan Animasi Custom
-Tambahkan class ke elemen HTML:
-```html
-<!-- Float effect -->
-<div class="animate-float">Content</div>
+2. Buka file `index.html` di browser:
+```bash
+# Dengan Python
+python -m http.server 8000
 
-<!-- Glow effect -->
-<button class="animate-glow">Tombol</button>
-
-<!-- Pulse effect -->
-<span class="animate-pulse">Loading...</span>
+# Atau langsung buka file
+open index.html
 ```
 
-### Konfigurasi Animasi
-Edit parameter di `index.js`:
-```javascript
-// Ubah kecepatan animasi welcome
-duration: 1000,  // milliseconds
+3. Nikmati pembelajaran interaktif!
 
-// Ubah easing (ease functions)
-easing: 'easeOutElastic(1, .6)',
+## 🛠️ Teknologi
 
-// Ubah delay antar elemen
-delay: anime.stagger(300)
+- **HTML5** - Struktur halaman
+- **CSS3** - Styling dan animasi
+- **JavaScript (ES6+)** - Interaktivitas
+- **Anime.js** - Library animasi
+- **Sketchfab** - Model 3D embeds
+
+## 📂 Struktur File
+
+```
+shape-prism-education/
+├── index.html          # Halaman utama HTML (struktur)
+├── style.css           # Stylesheet (styling)
+├── script.js           # JavaScript (interaktivitas + kuis)
+├── index.html.backup   # Backup file original
+└── README.md           # Dokumentasi
 ```
 
-## ✅ Checklist Fitur (Sesuai Rubrik)
-- [x] Judul Halaman & Paragraf Penjelasan
-- [x] Gambar Ilustrasi Prisma
-- [x] Tabel Sifat-sifat Prisma
-- [x] Tautan ke sumber belajar lain
-- [x] Form Kuis Mini
-- [x] Komentar penjelas pada kode
+## 🎮 Fitur Kuis
+
+- 10 pertanyaan pilihan ganda
+- Feedback langsung setelah memilih jawaban
+- Penjelasan untuk setiap jawaban
+- Skor persentase dan kategori nilai
+- Rekomendasi pembelajaran berdasarkan hasil
+
+## 🌟 Preview
+
+Website ini menampilkan:
+- Header dengan gradient biru yang menarik
+- Sections dengan shadow dan hover effects
+- Tabel rumus yang informatif
+- 4 jenis model prisma 3D (segitiga, segiempat, segi delapan, tabung)
+- Kuis interaktif di bagian akhir
+
+## 📱 Responsivitas
+
+Website ini fully responsive dan dapat diakses dengan baik di:
+- 💻 Desktop (1000px+)
+- 📱 Tablet (768px - 999px)
+- 📱 Mobile (< 768px)
+
+## 👤 Author
+
+**Muhamad Sa'idul Rizal**
+
+## 📄 License
+
+Project ini dibuat untuk tujuan edukasi.
+
+## 🙏 Credits
+
+- Model 3D dari [Sketchfab](https://sketchfab.com/)
+- Animasi menggunakan [Anime.js](https://animejs.com/)
 
 ---
-*Dibuat oleh: [Nama Anda]*
+
+© 2025 | Selamat belajar! 🎓
